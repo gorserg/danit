@@ -12,8 +12,11 @@
   },
   "author": "",
   "license": "ISC",
-  "bugs": { 
+  "bugs": {
     "url": "https://github.com/gorserg/danit/issues"
   },
-  "homepage": "https://github.com/gorserg/danit#readme"
+  "homepage": "https://github.com/gorserg/danit#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
