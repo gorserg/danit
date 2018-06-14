@@ -10,8 +10,26 @@ mongoose.connect('mongodb://admin:qwerty123@ds261040.mlab.com:61040/danit');
 
 const Track = mongoose.model('Track', { id: Number, name: String });
 
-const track = new Track({ id : 1,  name: 'Track #1' });
-track.save().then(() => console.log('saved'));
+//const track = new Track({ id : 1,  name: 'Track #1' });
+//track.save().then(() => console.log('saved'));
+
+// Create our Express router
+var router = express.Router();
+
+var trackRoute = router.route('/track');
+
+trackRoute.get(function(req, res) {
+    Track.find(function(err, tracks) {
+        if (err)
+            res.send(err);
+
+        res.json(tracks);
+    });
+});
+
+
+// Register all our routes with /api
+app.use('/api', router);
 
 app.get('/', function (req, res) {
     res.send('Hello World!');
