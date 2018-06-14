@@ -1,9 +1,17 @@
 var express = require('express');
 var app = express();
+var mongoose = require('mongoose');
 
 const tracks = require('./data/tracks.json');
-
 const port = process.env.PORT || 8080;
+
+// Connect mLab MongoDB
+mongoose.connect('mongodb://admin:qwerty123@ds261040.mlab.com:61040/danit');
+
+const Track = mongoose.model('Track', { id: Number, name: String });
+
+const track = new Track({ id : 1,  name: 'Track #1' });
+track.save().then(() => console.log('saved'));
 
 app.get('/', function (req, res) {
     res.send('Hello World!');
