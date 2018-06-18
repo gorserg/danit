@@ -5,6 +5,9 @@ var mongoose = require('mongoose');
 const tracks = require('./data/tracks.json');
 const port = process.env.PORT || 8080;
 
+
+app.use('/', express.static('public'));
+
 // Connect mLab MongoDB
 mongoose.connect('mongodb://admin:qwerty123@ds261040.mlab.com:61040/danit');
 
